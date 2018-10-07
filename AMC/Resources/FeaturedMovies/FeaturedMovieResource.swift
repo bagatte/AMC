@@ -6,7 +6,11 @@
 //  Copyright © 2018 Bruno Agatte. All rights reserved.
 //
 
+import UIKit
+
 protocol FeaturedMovieResource {
 
-	func moviesBy(tag: String, completion: @escaping ((Result<[Movie]>) -> Void))
+	func banners(completion: @escaping ((Result<[String]>) -> Void))
+
+	func featuredMovies(completion: @escaping ((Result<[Movie]>) -> Void))
 }

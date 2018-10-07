@@ -13,7 +13,7 @@ enum UtilityError: Error {
 	case jsonFileReadUnsuccessful
 	case jsonParserDecodingFailure
 	case jsonParserInvalidJSON
-	case serverError
+	case serverError(description: String?)
 	case networkingError
 	case notFoundError
 
@@ -25,8 +25,12 @@ enum UtilityError: Error {
 			return "Error decoding JSON."
 		case .jsonParserInvalidJSON:
 			return "Error transforming JSON into valid format."
-		case .serverError:
-			return "Server error."
+		case .serverError(let description):
+			if let description = description {
+				return "Server error. \(description)"
+			} else {
+				return "Server error."
+			}
 		case .networkingError:
 			return "Networking error."
 		case .notFoundError:

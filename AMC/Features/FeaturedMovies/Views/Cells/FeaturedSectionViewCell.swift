@@ -23,8 +23,8 @@ class FeaturedSectionViewCell: UICollectionViewCell, NibLoadable {
 
 	// MARK: - Public methods
 
-	func layout(movie: Movie) {
-		guard let url = URL(string: movie.imageUrl) else {
+	func layout(urlString: String) {
+		guard let url = URL(string: urlString) else {
 			return
 		}
 		imageView.loadImage(from: url)

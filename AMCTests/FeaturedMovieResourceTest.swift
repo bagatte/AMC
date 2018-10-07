@@ -17,9 +17,21 @@ class FeaturedMovieResourceTest: XCTestCase {
 
 		featuredMovieResource = StaticFeaturedMovieResource(jsonParser: JSONParser(), jsonFileReader: JSONFileReader())
 	}
+
+	func testBanners() {
+		featuredMovieResource.banners { result in
+			switch result {
+			case .success(let urlStrings):
+				let urlString = urlStrings.first!
+				XCTAssertEqual("https://farm2.staticflickr.com/1938/45159452081_b19edd5869.jpg", urlString)
+			case .error(let error):
+				XCTFail(error.localizedDescription)
+			}
+		}
+	}
         
-	func testFeaturedMovieResource() {
-		featuredMovieResource.moviesBy(tag: "") { result in
+	func testFeaturedMovies() {
+		featuredMovieResource.featuredMovies() { result in
 			switch result {
 			case .success(let movies):
 				let movie = movies.first!

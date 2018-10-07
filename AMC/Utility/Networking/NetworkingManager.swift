@@ -22,7 +22,7 @@ class NetworkingManager: NSObject {
 		let urlSession = URLSession(configuration: sessionConfiguration, delegate: nil, delegateQueue: nil)
 		let sessionTask = urlSession.dataTask(with: request) { (data, response, error) in
 			if error != nil {
-				completion(Result.error(UtilityError.serverError))
+				completion(Result.error(UtilityError.serverError(description: nil)))
 				return
 			}
 
@@ -32,7 +32,17 @@ class NetworkingManager: NSObject {
 					return
 				}
 				let jsonObject = try JSONSerialization.jsonObject(with: data, options: [])
-				completion(Result.success(value: jsonObject))
+
+				if
+					let json = jsonObject as? JSON,
+					let status = json["stat"] as? String,
+					status == "fail" {
+					if let messsage = json["message"] as? String {
+						completion(Result.error(UtilityError.serverError(description: messsage)))
+					}
+				} else {
+					completion(Result.success(value: jsonObject))
+				}
 
 			} catch {
 				completion(Result.error(UtilityError.networkingError))

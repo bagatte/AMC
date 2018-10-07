@@ -39,7 +39,7 @@ extension FeaturedSectionView: UICollectionViewDataSource {
 
 	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		let cell = collectionView.dequeueReusableCell(FeaturedSectionViewCell.self, forIndexPath: indexPath)
-		cell.layout(movie: viewModel.movies[indexPath.row])
+		cell.layout(urlString: viewModel.movies[indexPath.row].imageUrl)
 		return cell
 	}
 }

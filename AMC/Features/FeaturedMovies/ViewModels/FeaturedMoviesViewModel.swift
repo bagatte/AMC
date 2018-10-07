@@ -10,6 +10,8 @@ import UIKit
 
 struct FeaturedMoviesViewModel {
 
+	static let minimumNumberOfItemsPerSection = 3
+
 	// MARK: - Private properties
 
 	private(set) var newlyAddedViewModel: FeaturedSectionViewModel?
@@ -37,27 +39,32 @@ struct FeaturedMoviesViewModel {
 			var count = numberOfItemsPerSection
 
 			repeat {
+				if imageIndex > movies.count - 1 {
+					return
+				}
 				sortedMovies.append(movies[imageIndex])
 				imageIndex += 1
 				count -= 1
-			} while count > 0 && imageIndex <= movies.count - 1
+			} while count > 0 && imageIndex < movies.count
 
-			if index == FeaturedMoviesSection.newlyAdded.index {
-				newlyAddedViewModel = FeaturedSectionViewModel(title: FeaturedMoviesSection.newlyAdded.rawValue, movies: sortedMovies)
-			} else if index == FeaturedMoviesSection.curatorsChoice.index {
-				curatorsChoiceViewModel = FeaturedSectionViewModel(title: FeaturedMoviesSection.curatorsChoice.rawValue, movies: sortedMovies)
-			} else if index == FeaturedMoviesSection.bestSoundTracks.index {
-				bestSoundTracksViewModel = FeaturedSectionViewModel(title: FeaturedMoviesSection.bestSoundTracks.rawValue, movies: sortedMovies)
-			} else if index == FeaturedMoviesSection.getRad.index {
-				getRadViewModel = FeaturedSectionViewModel(title: FeaturedMoviesSection.getRad.rawValue, movies: sortedMovies)
-			} else if index == FeaturedMoviesSection.vengeanceIsHers.index {
-				vengeanceIsHersViewModel = FeaturedSectionViewModel(title: FeaturedMoviesSection.vengeanceIsHers.rawValue, movies: sortedMovies)
-			} else if index == FeaturedMoviesSection.blackMagic.index {
-				blackMagicViewModel = FeaturedSectionViewModel(title: FeaturedMoviesSection.blackMagic.rawValue, movies: sortedMovies)
-			} else if index == FeaturedMoviesSection.haunts.index {
-				hauntsViewModel = FeaturedSectionViewModel(title: FeaturedMoviesSection.haunts.rawValue, movies: sortedMovies)
-			} else if index == FeaturedMoviesSection.bingeThis.index {
-				bingeThisViewModel = FeaturedSectionViewModel(title: FeaturedMoviesSection.bingeThis.rawValue, movies: sortedMovies)
+			if sortedMovies.count >= FeaturedMoviesViewModel.minimumNumberOfItemsPerSection {
+				if index == FeaturedMoviesSection.newlyAdded.index {
+					newlyAddedViewModel = FeaturedSectionViewModel(title: FeaturedMoviesSection.newlyAdded.rawValue, movies: sortedMovies)
+				} else if index == FeaturedMoviesSection.curatorsChoice.index {
+					curatorsChoiceViewModel = FeaturedSectionViewModel(title: FeaturedMoviesSection.curatorsChoice.rawValue, movies: sortedMovies)
+				} else if index == FeaturedMoviesSection.bestSoundTracks.index {
+					bestSoundTracksViewModel = FeaturedSectionViewModel(title: FeaturedMoviesSection.bestSoundTracks.rawValue, movies: sortedMovies)
+				} else if index == FeaturedMoviesSection.getRad.index {
+					getRadViewModel = FeaturedSectionViewModel(title: FeaturedMoviesSection.getRad.rawValue, movies: sortedMovies)
+				} else if index == FeaturedMoviesSection.vengeanceIsHers.index {
+					vengeanceIsHersViewModel = FeaturedSectionViewModel(title: FeaturedMoviesSection.vengeanceIsHers.rawValue, movies: sortedMovies)
+				} else if index == FeaturedMoviesSection.blackMagic.index {
+					blackMagicViewModel = FeaturedSectionViewModel(title: FeaturedMoviesSection.blackMagic.rawValue, movies: sortedMovies)
+				} else if index == FeaturedMoviesSection.haunts.index {
+					hauntsViewModel = FeaturedSectionViewModel(title: FeaturedMoviesSection.haunts.rawValue, movies: sortedMovies)
+				} else if index == FeaturedMoviesSection.bingeThis.index {
+					bingeThisViewModel = FeaturedSectionViewModel(title: FeaturedMoviesSection.bingeThis.rawValue, movies: sortedMovies)
+				}
 			}
 		}
 	}

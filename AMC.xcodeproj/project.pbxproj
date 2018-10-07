@@ -59,6 +59,11 @@
 		F5122A98216A4ABE00221437 /* FeaturedMoviesSectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5122A97216A4ABE00221437 /* FeaturedMoviesSectionTests.swift */; };
 		F5122A99216A4AC900221437 /* FeaturedMoviesSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5122A842169BCBA00221437 /* FeaturedMoviesSection.swift */; };
 		F5122A9A216A4D0100221437 /* FeaturedMoviesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5122A872169BDE300221437 /* FeaturedMoviesViewModel.swift */; };
+		F5122A9C216A5A2C00221437 /* CarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5122A9B216A5A2C00221437 /* CarouselView.swift */; };
+		F5122AA3216A5B8300221437 /* CarouselViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5122AA1216A5B8300221437 /* CarouselViewCell.swift */; };
+		F5122AA4216A5B8300221437 /* CarouselViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5122AA2216A5B8300221437 /* CarouselViewCell.xib */; };
+		F5122AA6216A76AD00221437 /* banners.json in Resources */ = {isa = PBXBuildFile; fileRef = F5122AA5216A76AD00221437 /* banners.json */; };
+		F5122AA7216A76B300221437 /* banners.json in Resources */ = {isa = PBXBuildFile; fileRef = F5122AA5216A76AD00221437 /* banners.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,6 +116,10 @@
 		F5122A93216A4A3800221437 /* UICollectionView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extensions.swift"; sourceTree = "<group>"; };
 		F5122A95216A4A5A00221437 /* NibLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibLoadable.swift; sourceTree = "<group>"; };
 		F5122A97216A4ABE00221437 /* FeaturedMoviesSectionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedMoviesSectionTests.swift; sourceTree = "<group>"; };
+		F5122A9B216A5A2C00221437 /* CarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselView.swift; sourceTree = "<group>"; };
+		F5122AA1216A5B8300221437 /* CarouselViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselViewCell.swift; sourceTree = "<group>"; };
+		F5122AA2216A5B8300221437 /* CarouselViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CarouselViewCell.xib; sourceTree = "<group>"; };
+		F5122AA5216A76AD00221437 /* banners.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = banners.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -277,6 +286,7 @@
 		F5122A722169743200221437 /* JSON */ = {
 			isa = PBXGroup;
 			children = (
+				F5122AA5216A76AD00221437 /* banners.json */,
 				F5122A7321698B2900221437 /* movies.json */,
 			);
 			path = JSON;
@@ -298,6 +308,7 @@
 				F5122A8C216A2E5900221437 /* Cells */,
 				F5122A802169AAEF00221437 /* FeaturedSectionView.swift */,
 				F5122A822169AB0400221437 /* FeaturedSectionView.xib */,
+				F5122A9B216A5A2C00221437 /* CarouselView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -316,6 +327,8 @@
 			children = (
 				F5122A8D216A2E9100221437 /* FeaturedSectionViewCell.swift */,
 				F5122A8E216A2E9100221437 /* FeaturedSectionViewCell.xib */,
+				F5122AA1216A5B8300221437 /* CarouselViewCell.swift */,
+				F5122AA2216A5B8300221437 /* CarouselViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -406,6 +419,8 @@
 				F5122A212169345D00221437 /* Assets.xcassets in Resources */,
 				F5122A832169AB0400221437 /* FeaturedSectionView.xib in Resources */,
 				F5122A7521698CE200221437 /* movies.json in Resources */,
+				F5122AA6216A76AD00221437 /* banners.json in Resources */,
+				F5122AA4216A5B8300221437 /* CarouselViewCell.xib in Resources */,
 				F5122A1F2169345B00221437 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -415,6 +430,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F5122A7421698B2900221437 /* movies.json in Resources */,
+				F5122AA7216A76B300221437 /* banners.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -435,7 +451,9 @@
 				F5122A5C2169413300221437 /* RemoteFeaturedMovieResource.swift in Sources */,
 				F5122A8F216A2E9100221437 /* FeaturedSectionViewCell.swift in Sources */,
 				F5122A96216A4A5A00221437 /* NibLoadable.swift in Sources */,
+				F5122A9C216A5A2C00221437 /* CarouselView.swift in Sources */,
 				F5122A7E2169AA5900221437 /* UIView+Extensions.swift in Sources */,
+				F5122AA3216A5B8300221437 /* CarouselViewCell.swift in Sources */,
 				F5122A3E2169369700221437 /* FeaturedMoviesViewController.swift in Sources */,
 				F5122A94216A4A3800221437 /* UICollectionView+Extensions.swift in Sources */,
 				F5122A682169539500221437 /* HTTPMethod.swift in Sources */,
@@ -629,6 +647,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8A323JBT65;
 				INFOPLIST_FILE = AMC/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -646,6 +665,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8A323JBT65;
 				INFOPLIST_FILE = AMC/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

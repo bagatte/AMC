@@ -23,8 +23,30 @@ class StaticFeaturedMovieResource: FeaturedMovieResource {
 	}
 
 	// MARK: - Public functions
+
+	func banners(completion: @escaping ((Result<[String]>) -> Void)) {
+		do {
+			let jsonObject = try jsonFileReader.contentsOfFile("banners") as! JSON
+			guard
+				let photosJson = jsonObject["photos"] as? JSON,
+				let photosJsonArray = photosJson["photo"] as? [JSON] else {
+					completion(.error(UtilityError.jsonParserInvalidJSON))
+					return
+			}
+			let filteredJson = Array(photosJsonArray.prefix(4))
+			let imagesUrlString = filteredJson.compactMap({ json -> String? in
+				guard let imageUrl = json["url_m"] as? String else {
+					return nil
+				}
+				return imageUrl
+			})
+			completion(.success(value: imagesUrlString))
+		} catch {
+			completion(.error(error))
+		}
+	}
 	
-	func moviesBy(tag: String, completion: @escaping ((Result<[Movie]>) -> Void)) {
+	func featuredMovies(completion: @escaping ((Result<[Movie]>) -> Void)) {
 		do {
 			let jsonObject = try jsonFileReader.contentsOfFile("movies") as! JSON
 			let photosJson = jsonObject["photos"] as! JSON

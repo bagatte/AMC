@@ -13,6 +13,7 @@ class FeaturedMoviesViewController: UIViewController {
 	// MARK: - Outlets
 
 	@IBOutlet private weak var stackView: UIStackView!
+	@IBOutlet private weak var carouselView: CarouselView!
 
 	// MARK: - Private properties
 
@@ -37,14 +38,28 @@ class FeaturedMoviesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-		loadHorrorMovies()
+		loadBanners()
+		loadFeaturedMovies()
 		setupNavigationBar()
     }
 
 	// MARK: - Private methods
 
-	private func loadHorrorMovies() {
-		featuredMovieResource.moviesBy(tag: "horror%20movie") { result in
+	private func loadBanners() {
+		featuredMovieResource.banners { [weak self] result in
+			switch result {
+			case .success(let urlStrings):
+				DispatchQueue.main.async { [weak self] in
+					self?.carouselView.layout(urlStrings: urlStrings)
+				}
+			case .error(let error):
+				self?.showAlertWithError(error)
+			}
+		}
+	}
+
+	private func loadFeaturedMovies() {
+		featuredMovieResource.featuredMovies() { [weak self] result in
 			switch result {
 			case .success(let movies):
 				DispatchQueue.main.async { [weak self] in
@@ -52,15 +67,21 @@ class FeaturedMoviesViewController: UIViewController {
 					self?.setupFeaturedSections(featuredMoviesViewModel: featuredMoviesViewModel)
 				}
 			case .error(let error):
-				let errorMessage: String
-				if let error = error as? UtilityError {
-					errorMessage = error.localizedDescription
-				} else {
-					errorMessage = error.localizedDescription
-				}
-				print("error: \(errorMessage)")
+				self?.showAlertWithError(error)
 			}
 		}
+	}
+
+	private func showAlertWithError(_ error: Error) {
+		let errorMessage: String
+		if let error = error as? UtilityError {
+			errorMessage = error.localizedDescription
+		} else {
+			errorMessage = error.localizedDescription
+		}
+		let alert = UIAlertController(title: "OPS!", message: errorMessage, preferredStyle: .alert)
+		alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+		present(alert, animated: true, completion: nil)
 	}
 
 	private func setupFeaturedSections(featuredMoviesViewModel: FeaturedMoviesViewModel) {
@@ -108,8 +129,15 @@ class FeaturedMoviesViewController: UIViewController {
 	}
 
 	private func setupNavigationBar() {
+		UIApplication.shared.statusBarStyle = .lightContent
+		
 		navigationController?.navigationBar.isTranslucent = false
 		navigationController?.navigationBar
 			.barTintColor = UIColor(red: 26.0/255.0, green: 29.0/255.0, blue: 31.0/255.0, alpha: 1)
+
+		let titleImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 163, height: 28))
+		titleImageView.image = UIImage(named: "shudder_logo")
+		titleImageView.contentMode = .scaleToFill
+		navigationItem.titleView = titleImageView
 	}
 }

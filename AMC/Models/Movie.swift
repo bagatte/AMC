@@ -10,13 +10,15 @@ import UIKit
 
 struct Movie {
 
+	let id: String
+
 	let imageUrl: String
 
-	init?(imageUrl: String) {
-		guard imageUrl.isEmpty == false else {
+	init?(id: String, imageUrl: String) {
+		guard id.isEmpty == false, imageUrl.isEmpty == false else {
 			return nil
 		}
-
+		self.id = id
 		self.imageUrl = imageUrl
 	}
 }
@@ -24,10 +26,12 @@ struct Movie {
 extension Movie: Model {
 
 	init?(json: JSON) {
-		guard let imageUrl = json["url_m"] as? String, imageUrl.isEmpty == false else {
-			return nil
+		guard
+			let id = json["id"] as? String, id.isEmpty == false,
+			let imageUrl = json["url_m"] as? String, imageUrl.isEmpty == false else {
+				return nil
 		}
-
+		self.id = id
 		self.imageUrl = imageUrl
 	}
 }

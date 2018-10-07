@@ -20,14 +20,15 @@ class MovieTest: XCTestCase {
 
 	// MARK: - Public methods
 
-	func testMovieModelWithEmptyImageUrl() {
-		let movie = Movie(imageUrl: "")
+	func testMovieModelWithEmptyArguments() {
+		let movie = Movie(id: "", imageUrl: "")
 		XCTAssertTrue(movie == nil, "Movie should be nil.")
 	}
 
-	func testMovieModelWithImageUrl() {
-		let movie = Movie(imageUrl: "imageUrl")
+	func testMovieModelWithArguments() {
+		let movie = Movie(id: "0", imageUrl: "imageUrl")
 		XCTAssertTrue(movie != nil, "Movie should not be nil.")
+		XCTAssertTrue(movie!.id.isEmpty == false, "id should not be nil")
 		XCTAssertTrue(movie!.imageUrl.isEmpty == false, "imageUrl should not be nil")
 	}
 

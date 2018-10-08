@@ -130,12 +130,12 @@ class FeaturedMoviesViewController: UIViewController {
 
 	private func setupNavigationBar() {
 		UIApplication.shared.statusBarStyle = .lightContent
-		
+
 		navigationController?.navigationBar.isTranslucent = false
 		navigationController?.navigationBar
 			.barTintColor = UIColor(red: 26.0/255.0, green: 29.0/255.0, blue: 31.0/255.0, alpha: 1)
 
-		let titleImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 163, height: 28))
+		let titleImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 128, height: 22))
 		titleImageView.image = UIImage(named: "shudder_logo")
 		titleImageView.contentMode = .scaleToFill
 		navigationItem.titleView = titleImageView

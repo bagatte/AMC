@@ -22,10 +22,10 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="BkS-gX-oFE">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="210"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="220"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xlh-YM-Y3a" customClass="CarouselView" customModule="AMC" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="210"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="220"/>
                                                 <subviews>
                                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="04t-e8-1U8">
                                                         <rect key="frame" x="0.0" y="10" width="375" height="200"/>
@@ -46,7 +46,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="trailing" secondItem="04t-e8-1U8" secondAttribute="trailing" id="GYV-Mt-LDO"/>
                                                     <constraint firstItem="04t-e8-1U8" firstAttribute="top" secondItem="xlh-YM-Y3a" secondAttribute="top" constant="10" id="Hia-D4-aG3"/>
-                                                    <constraint firstAttribute="bottom" secondItem="04t-e8-1U8" secondAttribute="bottom" id="pVw-Fk-alv"/>
+                                                    <constraint firstAttribute="bottom" secondItem="04t-e8-1U8" secondAttribute="bottom" constant="10" id="pVw-Fk-alv"/>
                                                     <constraint firstItem="04t-e8-1U8" firstAttribute="leading" secondItem="xlh-YM-Y3a" secondAttribute="leading" id="zcw-sp-Uav"/>
                                                 </constraints>
                                                 <connections>

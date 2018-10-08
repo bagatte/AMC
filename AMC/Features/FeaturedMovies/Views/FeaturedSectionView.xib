@@ -32,10 +32,10 @@
                     </variation>
                 </label>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Pai-8m-W07">
-                    <rect key="frame" x="0.0" y="20" width="375" height="145"/>
+                    <rect key="frame" x="0.0" y="25" width="375" height="140"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="145" id="rFd-Aj-Ve3"/>
+                        <constraint firstAttribute="height" constant="140" id="rFd-Aj-Ve3"/>
                     </constraints>
                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="5" minimumInteritemSpacing="5" id="5oa-vW-ob6">
                         <size key="itemSize" width="100" height="140"/>
@@ -53,7 +53,7 @@
                 <constraint firstItem="Pai-8m-W07" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="I7q-T7-PRz"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="ZGi-g7-CJ6" secondAttribute="trailing" constant="15" id="Q3M-bh-FGc"/>
                 <constraint firstItem="ZGi-g7-CJ6" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="15" id="Y62-cF-q5T"/>
-                <constraint firstItem="Pai-8m-W07" firstAttribute="top" secondItem="ZGi-g7-CJ6" secondAttribute="bottom" id="wr2-El-mYV"/>
+                <constraint firstItem="Pai-8m-W07" firstAttribute="top" secondItem="ZGi-g7-CJ6" secondAttribute="bottom" constant="5" id="wr2-El-mYV"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>

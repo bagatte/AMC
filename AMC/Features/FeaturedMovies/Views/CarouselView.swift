@@ -10,29 +10,44 @@ import UIKit
 
 class CarouselView: UIView {
 
+	// MARK: - Outlets
+
 	@IBOutlet private weak var collectionView: UICollectionView!
 
-	var urlStrings: [String]!
+	// MARK: - Private properties
+
+	private var viewModels: [String]!
+
+	// MARK: - Public methods
 
 	func layout(urlStrings: [String]) {
-		let display3bis = urlStrings[3]
-		let display0 = urlStrings[0]
-		let display1 = urlStrings[1]
-		let display2 = urlStrings[2]
-		let display3 = urlStrings[3]
-		let display0bis = urlStrings[0]
-		self.urlStrings = [display3bis, display0, display1, display2, display3, display0bis]
+		viewModels = setupCarouselViewModels(urlStrings: urlStrings)
 
 		collectionView.dataSource = self
 		collectionView.delegate = self
 		collectionView.register(CarouselViewCell.self)
+	}
+
+	// MARK: - Private methods
+
+	private func setupCarouselViewModels(urlStrings: [String]) -> [String] {
+		var displays = [String](repeatElement("", count: urlStrings.count + 2))
+
+		displays[0] = urlStrings.last!
+		displays[displays.count - 1] = urlStrings.first!
+
+		for index in 1...urlStrings.count {
+			displays[index] = urlStrings[index - 1]
+		}
+
+		return displays
 	}
 }
 
 extension CarouselView: UICollectionViewDataSource {
 
 	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		return urlStrings.count
+		return viewModels.count
 	}
 
 	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -50,7 +65,7 @@ extension CarouselView: UICollectionViewDelegate {
 			return
 		}
 
-		cell.layout(stringUrl: urlStrings[indexPath.row])
+		cell.layout(stringUrl: viewModels[indexPath.row])
 	}
 }
 
@@ -82,14 +97,14 @@ extension CarouselView: UIScrollViewDelegate {
 		}
 
 		if let visibleIndexPath = highestItem {
-			if visibleIndexPath.row == (urlStrings.count - 1) {
+			if visibleIndexPath.row == (viewModels.count - 1) {
 				let newIndexPath = IndexPath(row: 1, section: 0)
 				collectionView.scrollToItem(at: newIndexPath,
 											at: .centeredHorizontally,
 											animated: false)
 
 			} else if visibleIndexPath.row == 0 {
-				let newIndexPath = IndexPath(row: urlStrings.count - 2, section: 0)
+				let newIndexPath = IndexPath(row: viewModels.count - 2, section: 0)
 				collectionView.scrollToItem(at: newIndexPath,
 											at: .centeredHorizontally,
 											animated: false)
